@@ -1,4 +1,4 @@
-![Screenshot of the interface of the Sugar Candy theme for SDDM](Previews/Mockup.jpg "The default interface of the Sugar Dark theme for SDDM")
+![Screenshot of the interface of the Sugar Candy theme for SDDM](Previews/PartialBlur.png "The default interface of the Sugar Dark theme for SDDM")
 
 # Sugar Candy login theme for SDDM
 
