@@ -22,13 +22,9 @@ including these modules:
 
 *Make sure these are installed with their required version or higher! Take note that a lot of LTS distros are fixed to Qt 5.9 for now.*
 
-Debian based distros using the APT package manager:
-(Ubuntu/MX-Linux/Deepin/Mint/Neon)
+Debian based distros using the APT package manager:  
+(Ubuntu/MX-Linux/Deepin/Mint/Neon)  
 `sudo apt install --no-install-recommends sddm qml-module-qtquick-layouts qml-module-qtgraphicaleffects qml-module-qtquick-controls2 libqt5svg5`
-
-
-
-TODO: Specify packages for APT, RPM and PACMAN
 
 ### Installing the theme
 
