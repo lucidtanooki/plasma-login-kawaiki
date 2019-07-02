@@ -1,4 +1,4 @@
-![Screenshot of the interface of the Sugar Candy theme for SDDM](Previews/PartialBlur.png "The default interface of the Sugar Dark theme for SDDM")
+![Screenshot of the interface of the Sugar Candy theme for SDDM](Previews/Mockup.jpg "The default interface of the Sugar Dark theme for SDDM")
 
 # Sugar Candy login theme for SDDM
 
@@ -15,13 +15,24 @@ This is just a teaser. There are 27 customizable variables in total! This sugar 
 
 ### Dependencies
 
-[`sddm >= 0.18`](https://github.com/sddm/sddm), [`qt5 >= 5.11`](http://doc.qt.io/qt-5/index.html) including the following Qt modules: [`qt5-quickcontrols2`](https://doc.qt.io/archives/qt-5.11/qtquickcontrols2-index.html), [`qt5-graphicaleffects`](https://doc.qt.io/archives/qt-5.11/qtgraphicaleffects-index.html), [`qt5-svg`](https://doc.qt.io/archives/qt-5.11/qtsvg-index.html)
+**SDDM** [`sddm >= 0.18`](https://github.com/sddm/sddm),  
+**Qt5** [`qt5 >= 5.11`](http://doc.qt.io/qt-5/index.html)  
+including these modules:  
+[`qt5‑quickcontrols2`](https://doc.qt.io/archives/qt-5.11/qtquickcontrols2-index.html), [`qt5‑graphicaleffects`](https://doc.qt.io/archives/qt-5.11/qtgraphicaleffects-index.html), [`qt5‑svg`](https://doc.qt.io/archives/qt-5.11/qtsvg-index.html)
 
-*Make sure these are installed with their required version or higher!*
+*Make sure these are installed with their required version or higher! Take note that a lot of LTS distros are fixed to Qt 5.9 for now.*
+
+Debian based distros using the APT package manager:
+(Ubuntu/MX-Linux/Deepin/Mint/Neon)
+`sudo apt install --no-install-recommends sddm qml-module-qtquick-layouts qml-module-qtgraphicaleffects qml-module-qtquick-controls2 libqt5svg5`
+
+
+
+TODO: Specify packages for APT, RPM and PACMAN
 
 ### Installing the theme
 
-###### From KDE Plasma
+###### From within KDE Plasma
 
 If you are on [KDE Plasma](https://www.kde.org/plasma-desktop)—by default [openSuse](https://www.opensuse.org/), [Neon](https://neon.kde.org/), [Kubuntu](https://kubuntu.org/), [KaOS](https://kaosx.us/) or [Chakra](https://www.chakralinux.org/) for example—you are lucky and can simply go to your system settings and under "Startup and Shutdown" followed by "Login Screen (SDDM)" click "Get New Theme". From there search for "Sugar Dark" and install.
 
@@ -31,13 +42,14 @@ If for some reason you cannot find the category named "Login Screen (SDDM)" in y
 
 [Download the tar archive from openDesktop](https://www.opendesktop.org/p/1272122) and extract the contents to the theme directory of SDDM *(change the path for the downloaded file if necessary)*:
 ```
-$ sudo tar -xzvf ~/Downloads/sugar-dark.tar.gz -C /usr/share/sddm/themes
+$ sudo mkdir -p /usr/share/sddm/themes
+$ sudo tar -xzvf ~/Downloads/sugar-candy.tar.gz -C /usr/share/sddm/themes
 ```
-This will extract all the files to a folder called "sugar-dark" inside of the themes directory of SDDM.  
+This will extract all the files to a folder called "sugar-candy" inside of the themes directory of SDDM.  
 
-After that you will have to point SDDM to the new theme by editing its config file, preferrably at `/etc/sddm.conf.d/sddm.conf` *(create if necessary)*. You can take the default config file of SDDM as a reference: `/etc/sddm.conf/usr/lib/sddm/sddm.conf.d/sddm.conf`.  
+After that you will have to point SDDM to the new theme by editing its config file, preferrably at `/etc/sddm.conf` *(create if necessary)*. You can take the default config file of SDDM as a reference: `/etc/sddm.conf/usr/lib/sddm/sddm.conf.d/sddm.conf`.  
 
-In the `[Theme]` section simply add the themes name: `Current=sugar-dark`. Also see the [Arch wiki on SDDM](https://wiki.archlinux.org/index.php/SDDM).
+In the `[Theme]` section simply add the themes name: `Current=sugar-candy`. Also see the [Arch wiki on SDDM](https://wiki.archlinux.org/index.php/SDDM).
 
 ### Theming the theme
 
