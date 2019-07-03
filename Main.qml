@@ -71,6 +71,16 @@ Pane {
         width: parent.width
 
         Rectangle {
+            id: tintLayer
+            anchors.fill: parent
+            width: parent.width
+            height: parent.height
+            color: "black"
+            opacity: config.DimBackgroundImage
+            z: 1
+        }
+
+        Rectangle {
             id: formBackground
             anchors.fill: form
             anchors.centerIn: form
@@ -104,12 +114,15 @@ Pane {
                            rightcenter ?
                                 formBackground.left : undefined
 
-            horizontalAlignment: config.BackgroundImageAlignment == "left" ?
+            horizontalAlignment: config.BackgroundImageHAlignment == "left" ?
                                  Image.AlignLeft :
-                                 config.BackgroundImageAlignment == "right" ?
-                                 Image.AlignRight :
-                                 config.BackgroundImageAlignment == "center" ?
-                                 Image.AlignHCenter : undefined
+                                 config.BackgroundImageHAlignment == "right" ?
+                                 Image.AlignRight : Image.AlignHCenter
+
+            verticalAlignment: config.BackgroundImageVAlignment == "top" ?
+                               Image.AlignTop :
+                               config.BackgroundImageVAlignment == "bottom" ?
+                               Image.AlignBottom : Image.AlignVCenter
 
             source: config.background || config.Background
             fillMode: config.ScaleImageCropped == "true" ? Image.PreserveAspectCrop : Image.PreserveAspectFit
@@ -141,8 +154,8 @@ Pane {
             height: parent.height
             width: config.FullBlur == "true" ? parent.width : form.width
             source: config.FullBlur == "true" ? backgroundImage : blurMask
-            radius: 100
-            samples: 201
+            radius: config.BlurRadius
+            samples: config.BlurRadius * 2 + 1
             cached: true
             anchors.centerIn: config.FullBlur == "true" ? parent : form
             visible: config.FullBlur == "true" || config.PartialBlur == "true" ? true : false

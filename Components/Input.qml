@@ -29,7 +29,6 @@ Column {
     property Control exposeLogin: loginButton
     property bool failed
 
-    // USERNAME INPUT
     Item {
         id: usernameField
 
@@ -61,7 +60,7 @@ Column {
                     text: model.realName != "" ? model.realName : model.name
                     font.pointSize: root.font.pointSize * 0.8
                     font.capitalization: Font.Capitalize
-                    color: selectUser.highlightedIndex === index ? "white" : root.palette.window.hslLightness >= 0.8 ? root.palette.highlight : "white"
+                    color: selectUser.highlightedIndex === index ? root.palette.highlight.hslLightness >= 0.7 ? "#444" : "white" : root.palette.window.hslLightness >= 0.8 ? root.palette.highlight.hslLightness >= 0.8 ? "#444" : root.palette.highlight : "white"
                     verticalAlignment: Text.AlignVCenter
                     horizontalAlignment: Text.AlignHCenter
                 }
@@ -92,6 +91,7 @@ Column {
 
             popup: Popup {
                 y: parent.height - username.height / 3
+                x: config.ForceRightToLeft == "true" ? -loginButton.width + selectUser.width : 0
                 rightMargin: config.ForceRightToLeft == "true" ? root.padding + usernameField.width / 2 : undefined
                 width: usernameField.width
                 implicitHeight: contentItem.implicitHeight
@@ -112,11 +112,11 @@ Column {
                     layer.effect: DropShadow {
                         transparentBorder: true
                         horizontalOffset: 0
-                        verticalOffset: 0
-                        radius: 100
-                        samples: 201
+                        verticalOffset: 10 * config.InterfaceShadowSize
+                        radius: 20 * config.InterfaceShadowSize
+                        samples: 41 * config.InterfaceShadowSize
                         cached: true
-                        color: "#88000000"
+                        color: Qt.hsla(0,0,0,config.InterfaceShadowOpacity)
                     }
                 }
 
@@ -170,7 +170,7 @@ Column {
             anchors.centerIn: parent
             height: root.font.pointSize * 3
             width: parent.width
-            placeholderText: config.TranslateUsernamePlaceholder || textConstants.userName
+            placeholderText: config.TranslatePlaceholderUsername || textConstants.userName
             selectByMouse: true
             horizontalAlignment: TextInput.AlignHCenter
             renderType: Text.QtRendering
@@ -202,7 +202,6 @@ Column {
 
     }
 
-    // PASSWORD INPUT
     Item {
         id: passwordField
         height: root.font.pointSize * 4.5
@@ -217,7 +216,7 @@ Column {
             focus: config.ForcePasswordFocus == "true" ? true : false
             selectByMouse: true
             echoMode: revealSecret.checked ? TextInput.Normal : TextInput.Password
-            placeholderText: config.TranslatePasswordPlaceholder || textConstants.password
+            placeholderText: config.TranslatePlaceholderPassword || textConstants.password
             horizontalAlignment: TextInput.AlignHCenter
             passwordCharacter: "•"
             passwordMaskDelay: config.ForceHideCompletePassword == "true" ? undefined : 1000
@@ -257,7 +256,6 @@ Column {
         ]
     }
 
-    // SHOW/HIDE PASS
     Item {
         id: secretCheckBox
         height: root.font.pointSize * 7
@@ -392,7 +390,6 @@ Column {
 
     }
 
-    // ERROR FIELD
     Item {
         height: root.font.pointSize * 2.3
         width: parent.width / 2
@@ -400,7 +397,7 @@ Column {
         Label {
             id: errorMessage
             width: parent.width
-            text: failed ? config.TranslateLoginFailed || textConstants.loginFailed + "!" : keyboard.capsLock ? textConstants.capslockWarning : null
+            text: failed ? config.TranslateLoginFailedWarning || textConstants.loginFailed + "!" : keyboard.capsLock ? config.TranslateCapslockWarning || textConstants.capslockWarning : null
             horizontalAlignment: Text.AlignHCenter
             font.pointSize: root.font.pointSize * 0.8
             font.italic: true
@@ -435,7 +432,6 @@ Column {
         }
     }
 
-    // LOGIN BUTTON
     Item {
         id: login
         height: root.font.pointSize * 3
@@ -453,7 +449,7 @@ Column {
 
             contentItem: Text {
                 text: parent.text
-                color: root.palette.text
+                color: config.OverrideLoginButtonTextColor != "" ? config.OverrideLoginButtonTextColor : root.palette.highlight.hslLightness >= 0.7 ? "#444" : "white"
                 font.pointSize: root.font.pointSize
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
@@ -478,12 +474,24 @@ Column {
                     }
                     PropertyChanges {
                         target: loginButton.contentItem
-                        color: "#ffffff"
                     }
                 },
                 State {
                     name: "hovered"
                     when: loginButton.hovered
+                    PropertyChanges {
+                        target: buttonBackground
+                        color: Qt.lighter(root.palette.highlight, 1.15)
+                        opacity: 1
+                    }
+                    PropertyChanges {
+                        target: loginButton.contentItem
+                        opacity: 1
+                    }
+                },
+                State {
+                    name: "focused"
+                    when: loginButton.visualFocus
                     PropertyChanges {
                         target: buttonBackground
                         color: Qt.lighter(root.palette.highlight, 1.1)
@@ -492,21 +500,6 @@ Column {
                     PropertyChanges {
                         target: loginButton.contentItem
                         opacity: 1
-                        color: "#ffffff"
-                    }
-                },
-                State {
-                    name: "focused"
-                    when: loginButton.visualFocus
-                    PropertyChanges {
-                        target: buttonBackground
-                        color: root.palette.highlight
-                        opacity: 1
-                    }
-                    PropertyChanges {
-                        target: loginButton.contentItem
-                        opacity: 1
-                        color: "#ffffff"
                     }
                 },
                 State {
@@ -526,14 +519,6 @@ Column {
 
             transitions: [
                 Transition {
-                    from: ""; to: "enabled"
-                    PropertyAnimation {
-                        properties: "opacity, color";
-                        duration: 500
-                    }
-                },
-                Transition {
-                    from: "enabled"; to: ""
                     PropertyAnimation {
                         properties: "opacity, color";
                         duration: 300
@@ -546,10 +531,10 @@ Column {
         }
     }
 
-    // SESSION SELECT
     SessionButton {
         id: sessionSelect
         textConstantSession: textConstants.session
+        loginButtonWidth: loginButton.background.width
     }
 
     Connections {

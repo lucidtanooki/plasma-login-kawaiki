@@ -38,7 +38,6 @@ RowLayout {
 
         RoundButton {
             id: icon
-            // enabled: modelData[2]
             text: modelData[1]
             font.pointSize: root.font.pointSize * 0.8
             Layout.alignment: Qt.AlignHCenter
@@ -46,7 +45,7 @@ RowLayout {
             icon.height: 2 * Math.round((root.font.pointSize * 3) / 2)
             icon.width: 2 * Math.round((root.font.pointSize * 3) / 2)
             display: AbstractButton.TextUnderIcon
-            // visible: modelData[2]
+            visible: modelData[2]
             hoverEnabled: true
             palette.buttonText: root.palette.text
             background: Rectangle {

@@ -32,14 +32,14 @@ ColumnLayout {
         id: clock
         Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
         Layout.preferredHeight: root.height / 4
-        Layout.leftMargin: p != "0" ? a == "left" ? -p : a == "right" ? p : null : null
+        Layout.leftMargin: p != "0" ? a == "left" ? -p : a == "right" ? p : 0 : 0
     }
 
     Input {
         id: input
         Layout.alignment: Qt.AlignTop
         Layout.preferredHeight: root.height / 10
-        Layout.leftMargin: p != "0" ? a == "left" ? -p : a == "right" ? p : null : null
+        Layout.leftMargin: p != "0" ? a == "left" ? -p : a == "right" ? p : 0 : 0
     }
 
     SystemButtons {
@@ -47,7 +47,7 @@ ColumnLayout {
         Layout.alignment: Qt.AlignHCenter | Qt.AlignBottom
         Layout.preferredHeight: root.height / 4
         Layout.maximumHeight: root.height / 4
-        Layout.leftMargin: p != "0" ? a == "left" ? -p : a == "right" ? p : null : null
+        Layout.leftMargin: p != "0" ? a == "left" ? -p : a == "right" ? p : 0 : 0
         exposedLogin: input.exposeLogin
     }
 

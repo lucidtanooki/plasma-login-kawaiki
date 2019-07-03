@@ -29,6 +29,7 @@ Item {
 
     property var selectedSession: selectSession.currentIndex
     property string textConstantSession
+    property int loginButtonWidth
 
     ComboBox {
         id: selectSession
@@ -46,7 +47,7 @@ Item {
             contentItem: Text {
                 text: model.name
                 font.pointSize: root.font.pointSize * 0.8
-                color: selectSession.highlightedIndex === index ? "white" : root.palette.window.hslLightness >= 0.8 ? root.palette.highlight : "white"
+                color: selectSession.highlightedIndex === index ? root.palette.highlight.hslLightness >= 0.7 ? "#444444" : "white" : root.palette.window.hslLightness >= 0.8 ? root.palette.highlight.hslLightness >= 0.8 ? "#444444" : root.palette.highlight : "white"
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
             }
@@ -84,7 +85,7 @@ Item {
         popup: Popup {
             id: popupHandler
             y: parent.height - 1
-            rightMargin: config.ForceRightToLeft == "true" ? root.padding + sessionButton.width / 2 : undefined
+            x: config.ForceRightToLeft == "true" ? -loginButtonWidth + displayedItem.width : 0
             width: sessionButton.width
             implicitHeight: contentItem.implicitHeight
             padding: 10
@@ -105,10 +106,10 @@ Item {
                     transparentBorder: true
                     horizontalOffset: 0
                     verticalOffset: 0
-                    radius: 100
-                    samples: 201
+                    radius: 20 * config.InterfaceShadowSize
+                    samples: 41 * config.InterfaceShadowSize
                     cached: true
-                    color: "#88000000"
+                    color: Qt.hsla(0,0,0,config.InterfaceShadowOpacity)
                 }
             }
 
