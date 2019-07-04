@@ -6,7 +6,7 @@
 
 You asked for more, you shall get it. Sugar Candy is the latest release in the Sugar series of SDDM themes. It's so extremely sweet your pancreas will have difficulties digesting its awesomeness.  
 
-Sweeten the login experience for your users, your family and yourself. Sugar Candy works on all major distributions and focuses on a straight forward user experience and superb functionality while still offering vast customization possibilities.  
+Sweeten the login experience for your users, your family and yourself. Sugar Candy works on almost all major distributions—see below—and focuses on a straight forward user experience and superb functionality while still offering vast customization possibilities.  
 
 Sugar Candy is based on the Sugar series which was **written completely from scratch** making it clean and simple not only by looks but by design too.  
 All controls use the [latest Qt Quick Controls 2](http://doc.qt.io/qt-5/qtquickcontrols2-index.html) for [increased performance](https://blog.qt.io/blog/2015/03/31/qt-quick-controls-for-embedded/) on low end or even embedded systems and beautiful color transitions.  
@@ -167,7 +167,8 @@ These are some previews of configurations possible with Sugar Candy.
 ![Screenshot of Sugar Candy using an illustration as background.](Previews/ScaleImageCropped.png "An SVG illustration used as background")
 ![Screenshot of Sugar Candy having a padding around the whole screen.](Previews/ScreenPadding.png "Using padding for the whole screen")
 ![Screenshot of Sugar Candy with a right to left layout.](Previews/ForceRightToLeft.png "Right to left layout")
-![Screenshot of Sugar Candy selection popup with fully blurred background.](Previews/InterfacePopup.png "Interface with fully blurred background")
+![Screenshot of Sugar Candy with fully blurred background.](Previews/FullBlur.png "With fully blurred background")
+![Screenshot of Sugar Candy selection popup.](Previews/InterfacePopup.png "Interface popup")
 
 ## Legal Notice
 
