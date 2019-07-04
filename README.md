@@ -1,6 +1,6 @@
 
 
-![Screenshot of the interface of the Sugar Candy theme for SDDM](Previews/Mockup.jpg "The default interface of the Sugar Dark theme for SDDM")
+![Screenshot of the interface of the Sugar Candy theme for SDDM](Previews/PartialBlur.png "The default interface of the Sugar Candy theme for SDDM")
 
 # Sugar Candy login theme for SDDM
 
@@ -39,10 +39,10 @@ In the `[Theme]` section simply add the themes name: `Current=sugar-candy`. Also
 [SDDM  >= 0.18](https://github.com/sddm/sddm) & [Qt5 >= 5.11](https://doc.qt.io/archives/qt-5.11/index.html)  
 including: [`Qt Quick Controls 2`](https://doc.qt.io/archives/qt-5.11/qtquickcontrols2-index.html), [`Qt Graphical Effects`](https://doc.qt.io/archives/qt-5.11/qtgraphicaleffects-index.html), [`Qt SVG`](https://doc.qt.io/archives/qt-5.11/qtsvg-index.html), [`Qt Quick Layouts`](https://doc.qt.io/archives/qt-5.11/qtquicklayouts-index.html) each `>= 5.11`—*see below for distro specific package names*  
 
-*Make sure these are installed with their required version or higher! SDDM might need an enabled system service/daemon to work. This is often done automatically during installation. Take note that some distros (like Deepin or Ubuntu LTS) are still on earlier versions. If in doubt ask in your distros forums.*  
+*Make sure these are installed with their required version or higher! SDDM might need an enabled system service/daemon to work. This is often done automatically during installation. Take note that a lot of standard release distros like Debian, Mint, MX, Elementary, Deepin or Ubuntu LTS are still on earlier versions. If in doubt ask in your distros forums.*  
 
 **Debian based** distros using the **APT** package manager:  
-*(Ubuntu/MX-Linux/Mint/Neon etc.)*  
+*(Ubuntu/Kubuntu/Kali/Neon/antiX etc.)*  
 `sudo apt install --no-install-recommends sddm qml-module-qtquick-layouts qml-module-qtgraphicaleffects qml-module-qtquick-controls2 libqt5svg5`
 
 **Arch based** distros using the **pacman** package manger:  
@@ -53,7 +53,7 @@ including: [`Qt Quick Controls 2`](https://doc.qt.io/archives/qt-5.11/qtquickcon
 `sudo zypper install sddm libqt5-qtgraphicaleffects libqt5-qtquickcontrols2 libQt5Svg5 libQt5Svg5`
 
 **Red Hat** based distros using the **dnf** package manager:  
-*(Fedora/RHEL/CentOS)*  
+*(Fedora/Mageia/RHEL/CentOS)*  
 `sudo dnf install sddm qt5-qtgraphicaleffects qt5-qtquickcontrols2 qt5-qtsvg`
 
 ## Configuration
@@ -161,6 +161,13 @@ And as if that wouldn't still be enough you can translate every single button an
 **TranslateReboot=""**  
 **TranslateShutdown=""**  
 *These don't necessarily need to translate anything. You can enter whatever you want here.*  
+
+## Examples
+These are some previews of configurations possible with Sugar Candy.
+![Screenshot of Sugar Candy using an illustration as background.](Previews/ScaleImageCropped.png "An SVG illustration used as background")
+![Screenshot of Sugar Candy having a padding around the whole screen.](Previews/ScreenPadding.png "Using padding for the whole screen")
+![Screenshot of Sugar Candy with a right to left layout.](Previews/ForceRightToLeft.png "Right to left layout")
+![Screenshot of Sugar Candy selection popup with fully blurred background.](Previews/InterfacePopup.png "Interface with fully blurred background")
 
 ## Legal Notice
 
