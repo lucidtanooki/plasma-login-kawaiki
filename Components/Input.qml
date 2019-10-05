@@ -43,13 +43,16 @@ Column {
             width: parent.height
             height: parent.height
             anchors.left: parent.left
+
+            property var popkey: config.ForceRightToLeft == "true" ? Qt.Key_Right : Qt.Key_Left
             Keys.onPressed: {
-                if ( (event.key == Qt.Key_Down || event.key == Qt.Key_Right) && !popup.opened )
+                if (event.key == Qt.Key_Down && !popup.opened)
                     username.forceActiveFocus();
-                if ( (event.key == Qt.Key_Left || event.key == Qt.Key_Up) && !popup.opened )
+                if ((event.key == Qt.Key_Up || event.key == popkey) && !popup.opened)
                     popup.open();
                 }
             KeyNavigation.down: username
+            KeyNavigation.right: username
             z: 2
 
             model: userModel
