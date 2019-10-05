@@ -26,7 +26,7 @@ Column {
     id: inputContainer
     Layout.fillWidth: true
 
-    property Control exposeLogin: loginButton
+    property Control exposeSession: sessionSelect.exposeSession
     property bool failed
 
     Item {
@@ -43,6 +43,13 @@ Column {
             width: parent.height
             height: parent.height
             anchors.left: parent.left
+            Keys.onPressed: {
+                if ( (event.key == Qt.Key_Down || event.key == Qt.Key_Right) && !popup.opened )
+                    username.forceActiveFocus();
+                if ( (event.key == Qt.Key_Left || event.key == Qt.Key_Up) && !popup.opened )
+                    popup.open();
+                }
+            KeyNavigation.down: username
             z: 2
 
             model: userModel
@@ -144,7 +151,7 @@ Column {
                 },
                 State {
                     name: "focused"
-                    when: selectUser.visualFocus
+                    when: selectUser.activeFocus
                     PropertyChanges {
                         target: usernameIcon
                         icon.color: root.palette.highlight
@@ -180,7 +187,7 @@ Column {
                 border.width: parent.activeFocus ? 2 : 1
                 radius: config.RoundCorners || 0
             }
-            Keys.onReturnPressed: loginButton.clicked()
+            onAccepted: loginButton.clicked()
             KeyNavigation.down: password
             z: 1
 
@@ -227,7 +234,7 @@ Column {
                 border.width: parent.activeFocus ? 2 : 1
                 radius: config.RoundCorners || 0
             }
-            Keys.onReturnPressed: loginButton.clicked()
+            onAccepted: loginButton.clicked()
             KeyNavigation.down: revealSecret
         }
 
@@ -277,7 +284,7 @@ Column {
                 implicitWidth: root.font.pointSize
                 color: "transparent"
                 border.color: root.palette.text
-                border.width: parent.visualFocus ? 2 : 1
+                border.width: parent.activeFocus ? 2 : 1
                 Rectangle {
                     id: dot
                     anchors.centerIn: parent
@@ -300,13 +307,14 @@ Column {
             }
 
             Keys.onReturnPressed: toggle()
+            Keys.onEnterPressed: toggle()
             KeyNavigation.down: loginButton
 
             background: Rectangle {
                 color: "transparent"
-                border.width: parent.visualFocus ? 1 : 0
-                border.color: parent.visualFocus ? root.palette.text : "transparent"
-                height: parent.visualFocus ? 2 : 0
+                border.width: parent.activeFocus ? 1 : 0
+                border.color: parent.activeFocus ? root.palette.text : "transparent"
+                height: parent.activeFocus ? 2 : 0
                 width: (indicator.width + indicatorLabel.contentWidth + indicatorLabel.anchors.leftMargin + 2)
                 anchors.top: indicatorLabel.bottom
                 anchors.left: parent.left
@@ -358,7 +366,7 @@ Column {
             },
             State {
                 name: "focused"
-                when: revealSecret.visualFocus
+                when: revealSecret.activeFocus
                 PropertyChanges {
                     target: indicatorLabel
                     color: root.palette.highlight
@@ -490,10 +498,10 @@ Column {
                 },
                 State {
                     name: "focused"
-                    when: loginButton.visualFocus
+                    when: loginButton.activeFocus
                     PropertyChanges {
                         target: buttonBackground
-                        color: Qt.lighter(root.palette.highlight, 1.1)
+                        color: Qt.lighter(root.palette.highlight, 1.2)
                         opacity: 1
                     }
                     PropertyChanges {
@@ -525,8 +533,10 @@ Column {
                 }
             ]
 
-            Keys.onReturnPressed: clicked()
             onClicked: sddm.login(username.text, password.text, sessionSelect.selectedSession)
+            Keys.onReturnPressed: clicked()
+            Keys.onEnterPressed: clicked()
+            KeyNavigation.down: sessionSelect.exposeSession
         }
     }
 
