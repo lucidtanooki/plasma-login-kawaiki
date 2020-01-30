@@ -458,7 +458,7 @@ Column {
             text: config.TranslateLogin || textConstants.login
             height: root.font.pointSize * 3
             implicitWidth: parent.width
-            enabled: username.text != "" && password.text != "" ? true : false
+            enabled: config.AllowEmptyPassword == "true" || username.text != "" && password.text != "" ? true : false
             hoverEnabled: true
 
             contentItem: Text {
