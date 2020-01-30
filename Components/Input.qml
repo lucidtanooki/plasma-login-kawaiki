@@ -184,6 +184,10 @@ Column {
             selectByMouse: true
             horizontalAlignment: TextInput.AlignHCenter
             renderType: Text.QtRendering
+            onFocusChanged:{
+                if(focus)
+                    selectAll()
+            }
             background: Rectangle {
                 color: "transparent"
                 border.color: root.palette.text
