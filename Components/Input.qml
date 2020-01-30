@@ -176,7 +176,7 @@ Column {
         TextField {
             id: username
             text: config.ForceLastUser == "true" ? selectUser.currentText : null
-            font.capitalization: Font.Capitalize
+            font.capitalization: config.AllowBadUsernames == "false" ? Font.Capitalize : Font.MixedCase
             anchors.centerIn: parent
             height: root.font.pointSize * 3
             width: parent.width
@@ -536,7 +536,7 @@ Column {
                 }
             ]
 
-            onClicked: sddm.login(username.text.toLowerCase(), password.text, sessionSelect.selectedSession)
+            onClicked: config.AllowBadUsernames == "false" ? sddm.login(username.text.toLowerCase(), password.text, sessionSelect.selectedSession) : sddm.login(username.text, password.text, sessionSelect.selectedSession)
             Keys.onReturnPressed: clicked()
             Keys.onEnterPressed: clicked()
             KeyNavigation.down: sessionSelect.exposeSession
