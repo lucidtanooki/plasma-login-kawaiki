@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.5-lt] - 2021-08-14
+- Some color and background changes
+
 ## [1.5] - 2020-01-30
 ### Fixed
 - The username input now gets selected on focus
