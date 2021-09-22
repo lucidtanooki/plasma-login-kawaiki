@@ -2,7 +2,9 @@
 
 ![Screenshot of the interface of the Sugar Candy theme for SDDM](Previews/PartialBlur.png "The default interface of the Sugar Candy theme for SDDM")
 
-# Sugar Candy login theme for SDDM
+# Kawaiki login theme for SDDM
+
+> Forked from Marian Arlt's [Sugar Candy SDDM theme](https://framagit.org/MarianArlt/sddm-sugar-candy)
 
 You asked for more, you shall get it. Sugar Candy is the latest release in the Sugar series of SDDM themes. It's so extremely sweet your pancreas will have difficulties digesting its awesomeness.  
 
