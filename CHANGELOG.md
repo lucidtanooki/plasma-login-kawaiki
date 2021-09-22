@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.6] - 2021-09-22
+- Changes icons and preview
+
 ## [1.5-lt] - 2021-08-14
 - Some color and background changes
 
