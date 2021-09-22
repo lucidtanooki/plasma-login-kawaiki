@@ -1,16 +1,16 @@
 [SddmGreeterTheme]
-Name=Sugar Candy
-Description=Premium Sugar for SDDM
-Author=Marian Arlt
-Copyright=Copyright (C) 2018 Marian Arlt
+Name=Kawaiki
+Description=Kawaiki for SDDM
+Author=Georg Eckert, Marian Arlt
+Copyright=Copyright (C) 2018 Marian Arlt, (C) 2021 Georg Eckert
 License=GPL-3.0-or-later
 Type=sddm-theme
-Version=1.5
-Website=https://framagit.org/MarianArlt/sddm-sugar-candy
+Version=1.5-lt
+Website=https://github.com/lucidtanooki/plasma-login-kawaiki
 Screenshot=Previews/PartialBlur.png
 MainScript=Main.qml
 ConfigFile=theme.conf
 TranslationsDirectory=translations
-Email=marianarlt@icloud.com
-Theme-Id=sugar-candy
+Email=
+Theme-Id=plasma-login-kawaiki
 Theme-API=2.11
