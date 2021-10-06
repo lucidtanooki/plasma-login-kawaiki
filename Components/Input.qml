@@ -44,6 +44,7 @@ Column {
         ComboBox {
 
             id: selectUser
+            displayText: ""
 
             width: parent.height
             height: parent.height
